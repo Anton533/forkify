@@ -7,15 +7,13 @@ import bookmarksView from './views/bookmarksView.js';
 import paginationView from './views/paginationView.js';
 import addRecipeView from './views/addRecipeView.js';
 
-// if (module.hot) {
-//   module.hot.accept();
-// }
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+import { async } from 'regenerator-runtime';
 
-// import 'core-js/stable';
-// import 'regenerator-runtime/runtime';
-
-// "core-js": "^3.32.2",
-// "regenerator-runtime": "^0.14.0"
+if (module.hot) {
+  module.hot.accept();
+}
 
 async function controlRecipes() {
   try {
@@ -125,7 +123,7 @@ async function controlAddRecipe(newRecipe) {
 function init() {
   bookmarksView.addHandlerRender(controlBookmarks);
   recipeView.addHandlerRender(controlRecipes);
-  recipeView.addHandlerUpdareServings(controlServings);
+  recipeView.addHandlerUpdateServings(controlServings);
   recipeView.addHandlerAddBookmark(controlAddBookmark);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);

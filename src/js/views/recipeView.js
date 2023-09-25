@@ -1,7 +1,6 @@
-import View from './View.js';
-
-import icons from 'url:../../img/icons.svg';
 import { Fraction } from 'fractional';
+import icons from 'url:../../img/icons.svg';
+import View from './View.js';
 
 class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');
@@ -12,7 +11,7 @@ class RecipeView extends View {
     ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
   }
 
-  addHandlerUpdareServings(handler) {
+  addHandlerUpdateServings(handler) {
     this._parentElement.addEventListener('click', function (e) {
       const btn = e.target.closest('.btn--update-servings');
       if (!btn) return;
