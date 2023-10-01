@@ -28,6 +28,14 @@ class RecipeView extends View {
     });
   }
 
+  addHandlerAddToShoppingList(handler) {
+    this._parentElement.addEventListener('click', function (e) {
+      const btn = e.target.closest('.add-shopping-list-btn');
+      if (!btn) return;
+      handler();
+    });
+  }
+
   _generateMarkup() {
     return `
       <figure class="recipe__fig">
@@ -95,6 +103,15 @@ class RecipeView extends View {
         <ul class="recipe__ingredient-list">
           ${this._data.ingredients.map(this._generateMarkupIngredient).join('')}
         </ul>
+
+        <div class="add-shopping-list-btn__wrapper">
+        <button class="btn--round add-shopping-list-btn">
+          <svg class="">
+            <use href="http://localhost:1234/icons.dfd7a6db.svg?1695655151076#icon-plus-circle"></use>
+          </svg>
+        </button>
+        <p>Add to shopping list</p>
+        </div>
       </div>
 
       <div class="recipe__directions">

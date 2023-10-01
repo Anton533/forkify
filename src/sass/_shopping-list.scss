@@ -1,0 +1,61 @@
+.shopping-list {
+  background-color: $color-grey-light-1;
+  max-height: 80vh;
+  overflow-y: auto;
+
+  &__ingredient-list {
+    margin-bottom: 10px;
+  }
+
+  &__ingredients-title {
+    color: $color-primary;
+  }
+  &__item {
+    background-color: $color-grey-light-2;
+    margin-bottom: 0.5rem;
+  }
+  &__item-heading {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item-link {
+    flex-grow: 1;
+  }
+
+  &__ingredients {
+    padding: 0.5rem;
+    padding-left: 3rem;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    background-color: $color-grad-1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__ingredient-list {
+    list-style: none;
+  }
+
+  &__ingredient {
+    display: flex;
+    margin-bottom: 0.5rem;
+  }
+
+  &__quantity {
+    margin-right: 0.5rem;
+    flex: 0 0 auto;
+  }
+}
+
+.recipe__ingredient-wrapper {
+  display: flex;
+}
+
+.recipe__ingredient-checkbox {
+  margin-right: 1rem;
+}
+
+.done {
+  text-decoration: line-through;
+}

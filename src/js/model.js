@@ -13,6 +13,7 @@ export const state = {
     resultsPerPage: RES_PER_PAGE,
   },
   bookmarks: [],
+  shoppingList: [],
 };
 
 function createRecipeObject(data) {
@@ -29,6 +30,8 @@ function createRecipeObject(data) {
     ...(recipe.key && { key: recipe.key }),
   };
 }
+
+///////////////////////////////////
 
 export async function loadRecipe(id) {
   try {
@@ -84,7 +87,7 @@ export function updateServings(newServings) {
 }
 
 function persistBookmarks() {
-  localStorage.setItem('bookmarks', JSON.stringify(state.bookmarks));
+  localStorage.setItem('forkify-bookmarks', JSON.stringify(state.bookmarks));
 }
 
 export function addBookmark(recipe) {
@@ -105,14 +108,8 @@ export function delBookmark(id) {
   persistBookmarks();
 }
 
-function init() {
-  const storage = localStorage.getItem('bookmarks');
-  if (storage) state.bookmarks = JSON.parse(storage);
-}
-init();
-
 function clearBookmarks() {
-  localStorage.clear('bookmarks');
+  localStorage.clear('forkify-bookmarks');
 }
 // clearBookmarks();
 
@@ -146,3 +143,51 @@ export const uploadRecipe = async function (newRecipe) {
     console.log(err);
   }
 };
+
+function persistShoppingList() {
+  localStorage.setItem(
+    'forkify-shopping-list',
+    JSON.stringify(state.shoppingList)
+  );
+}
+
+export function addToShoppingList(recipe) {
+  const idx = state.shoppingList.findIndex(el => el.id === recipe.id);
+  if (idx !== -1) {
+    alert(`Recipe is already in the shopping list!`);
+    return;
+  }
+  const recipeCopy = { ...recipe };
+  recipeCopy.ingredients.map(ing => ({ ...ing }));
+  recipeCopy.ingredients.map(ing => (ing.complete = false));
+  state.shoppingList.push(recipe);
+
+  persistShoppingList();
+}
+
+export function delShoppingList(id) {
+  const idx = state.shoppingList.findIndex(el => el.id === id);
+  state.shoppingList.splice(idx, 1);
+
+  persistShoppingList();
+}
+
+export function setShoppingListComplete(recipeId, desc, checked) {
+  const recipeIdx = state.shoppingList.findIndex(el => el.id === recipeId);
+  const curRecipe = state.shoppingList[recipeIdx];
+  const ingredientIdx = curRecipe.ingredients.findIndex(
+    el => el.description === desc
+  );
+
+  curRecipe.ingredients[ingredientIdx].complete = checked;
+
+  persistShoppingList();
+}
+
+function init() {
+  const storageBookmarks = localStorage.getItem('forkify-bookmarks');
+  const storageShopping = localStorage.getItem('forkify-shopping-list');
+  if (storageBookmarks) state.bookmarks = JSON.parse(storageBookmarks);
+  if (storageShopping) state.shoppingList = JSON.parse(storageShopping);
+}
+init();

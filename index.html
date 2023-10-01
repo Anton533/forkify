@@ -10,6 +10,7 @@
 
   <link rel="stylesheet" href="src/sass/main.scss" />
   <script type="module" src="src/js/controller.js"></script>
+  <script defer src="src/js/script.js"></script>
 
   <title>forkify // Search over 1,000,000 recipes</title>
 </head>
@@ -71,6 +72,109 @@
                       </div>
                     </a>
                   </li> -->
+              </ul>
+            </div>
+          </li>
+          <li class="nav__item">
+            <button class="nav__btn nav__btn--shopping-list">
+              <svg class="nav__icon">
+                <use href="src/img/icons.svg#icon-send"></use>
+              </svg>
+              <span>Shopping list</span>
+            </button>
+            <div class="shopping-list">
+              <ul class="shopping-list__list">
+                <div class="message">
+                  <div>
+                    <svg>
+                      <use href="src/img/icons.svg#icon-smile"></use>
+                    </svg>
+                  </div>
+                  <p>
+                    No shopping list yet
+                  </p>
+                </div>
+
+                <!-- <li class="preview shopping-list__item">
+                  <a class="preview__link shopping-list__item-link" href="#23456">
+                    <figure class="preview__fig">
+                      <img src="src/img/Pizza2B.jpeg" alt="Test" />
+                    </figure>
+                    <div class="preview__data">
+                      <h4 class="preview__title">
+                        PIZZA DIP
+                      </h4>
+                    </div>
+                  </a>
+
+                  <div class="shopping-list__ingredients">
+                    <h2 class="shopping-list__ingredients-title">Recipe ingredients</h2>
+                    <ul class="shopping-list__ingredient-list">
+
+                      <li class="shopping-list__ingredient">
+                        <div class="shopping-list__quantity">4</div>
+                        <div class="shopping-list__description">
+                          <span class="shopping-list__unit">oz</span>
+                          cream cheese room temperature
+                        </div>
+                      </li>
+
+                      <li class="shopping-list__ingredient">
+                        <div class="shopping-list__quantity">1/4</div>
+                        <div class="shopping-list__description">
+                          <span class="shopping-list__unit">cup</span>
+                          mayonnaise
+                        </div>
+                      </li>
+
+                      <li class="shopping-list__ingredient">
+                        <div class="shopping-list__quantity">1/4</div>
+                        <div class="shopping-list__description">
+                          <span class="shopping-list__unit">cup</span>
+                          sour cream
+                        </div>
+                      </li>
+
+                      <li class="shopping-list__ingredient">
+                        <div class="shopping-list__quantity">1/2</div>
+                        <div class="shopping-list__description">
+                          <span class="shopping-list__unit">cup</span>
+                          mozzarella grated
+                        </div>
+                      </li>
+
+                    </ul>
+                  </div>
+
+                </li> -->
+
+                <!-- <li class="preview shopping-list__item">
+                  <a class="preview__link shopping-list__item-link" href="#23456">
+                    <figure class="preview__fig">
+                      <img src="src/img/Pizza2B.jpeg" alt="Test" />
+                    </figure>
+                    <div class="preview__data">
+                      <h4 class="preview__title">
+                        HOW TO GRILL PIZZA
+                      </h4>
+                    </div>
+                  </a>
+
+                  <div class="shopping-list__ingredients">
+                    <h2 class="shopping-list__ingredients-title">Recipe ingredients</h2>
+                    <ul class="shopping-list__ingredient-list">
+
+                      <label for="">
+                        <input type="checkbox">
+
+                      </label>
+
+
+                    </ul>
+                  </div>
+
+                </li> -->
+
               </ul>
             </div>
           </li>
@@ -246,6 +350,8 @@
     </div>
   </div>
 
+
+
   <div class="overlay hidden"></div>
   <div class="add-recipe-window hidden">
     <button class="btn--close-modal">&times;</button>
@@ -290,7 +396,11 @@
         <span>Upload</span>
       </button>
     </form>
+
   </div>
+
+
 </body>
+
 
 </html>

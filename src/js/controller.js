@@ -7,6 +7,9 @@ import bookmarksView from './views/bookmarksView.js';
 import paginationView from './views/paginationView.js';
 import addRecipeView from './views/addRecipeView.js';
 
+import shoppingListView from './views/shoppingListView.js';
+import shoppingRecipeView from './views/shoppingRecipeView.js';
+
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import { async } from 'regenerator-runtime';
@@ -120,13 +123,39 @@ async function controlAddRecipe(newRecipe) {
   }
 }
 
+function controlAddToShoppingList() {
+  model.addToShoppingList(model.state.recipe);
+  shoppingListView.render(model.state.shoppingList);
+}
+
+function controlShoppingList() {
+  shoppingListView.render(model.state.shoppingList);
+}
+
+function controlDelShoppingList(id) {
+  const confirmed = confirm('Seriously');
+  if (!confirmed) return;
+  model.delShoppingList(id);
+  shoppingListView.render(model.state.shoppingList);
+}
+
+function controlIsChecked(recipeId, desc, checked) {
+  model.setShoppingListComplete(recipeId, desc, checked);
+  shoppingListView.update(model.state.shoppingList);
+}
+
 function init() {
   bookmarksView.addHandlerRender(controlBookmarks);
+  shoppingListView.addHandlerRender(controlShoppingList);
+  shoppingListView.addHandlerDelRecipe(controlDelShoppingList);
   recipeView.addHandlerRender(controlRecipes);
   recipeView.addHandlerUpdateServings(controlServings);
   recipeView.addHandlerAddBookmark(controlAddBookmark);
+  recipeView.addHandlerAddToShoppingList(controlAddToShoppingList);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
+
+  shoppingRecipeView.addHandlerChecked(controlIsChecked);
 }
 init();

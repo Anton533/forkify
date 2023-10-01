@@ -104,7 +104,8 @@
   }
 }
 
-.bookmarks {
+.bookmarks,
+.shopping-list {
   padding: 1rem 0;
   position: absolute;
   // right: 0;
@@ -138,6 +139,10 @@
 
   &:hover,
   .nav__btn--bookmarks:hover + & {
+    visibility: visible;
+    opacity: 1;
+  }
+  .nav__btn--shopping-list:hover + & {
     visibility: visible;
     opacity: 1;
   }
