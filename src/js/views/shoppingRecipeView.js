@@ -27,7 +27,7 @@ class ShoppingListView extends View {
         <li class="preview shopping-list__item" data-recipe-id="${
           this._data.id
         }">
-          <div class ="shopping-list__item-heading">
+          <div class="shopping-list__item-heading">
           <a class="preview__link shopping-list__item-link ${
             this._data.id === id ? `preview__link--active` : ''
           }" href="#${this._data.id}">
@@ -56,20 +56,25 @@ class ShoppingListView extends View {
 
   _generateMarkupIngredient(ing) {
     return `
-    <li class="recipe__ingredient ${ing.complete ? 'done' : ''}" >
-      <label class="recipe__ingredient-wrapper">
-        <input ${ing.complete ? 'checked' : ''} type="checkbox" value="${
-      ing.description
-    }" name="${ing.complete}" class="recipe__ingredient-checkbox">
-          <div class="recipe__quantity">${
-            ing.quantity ? new Fraction(ing.quantity).toString() : ''
-          }</div>
-          <div class="recipe__description">
-            <span class="recipe__unit">${ing.unit}</span>
-            ${ing.description}
-          </div>
-        </label>
-      </li>
+     <li class="recipe__ingredient ${ing.complete ? 'done' : ''}" >
+       <label class="recipe__ingredient-wrapper">
+         <input 
+          ${ing.complete ? 'checked' : ''}
+          type="checkbox" 
+          value="${ing.description}" 
+          class="recipe__ingredient-checkbox"
+         >
+         
+         <span class="recipe__quantity">
+          ${ing.quantity ? new Fraction(ing.quantity).toString() : ''}
+         </span>
+
+        <span class="recipe__description">
+          <span class="recipe__unit">${ing.unit}</span>
+          ${ing.description}
+        </span>
+      </label>
+     </li>
     `;
   }
 }

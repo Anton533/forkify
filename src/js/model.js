@@ -158,9 +158,11 @@ export function addToShoppingList(recipe) {
     return;
   }
   const recipeCopy = { ...recipe };
-  recipeCopy.ingredients.map(ing => ({ ...ing }));
-  recipeCopy.ingredients.map(ing => (ing.complete = false));
-  state.shoppingList.push(recipe);
+  recipeCopy.ingredients = recipeCopy.ingredients.map(ing => ({
+    ...ing,
+    complete: false,
+  }));
+  state.shoppingList.push(recipeCopy);
 
   persistShoppingList();
 }
